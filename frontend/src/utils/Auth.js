@@ -10,6 +10,7 @@ const handleResponse = (response) => {
     return response.json();
   }
   
+  
 export const registration = (email, password) => {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
@@ -17,7 +18,6 @@ export const registration = (email, password) => {
             'Content-type': 'application/json'
         },
         credentials: "include",
-
         body: JSON.stringify({ email, password })
     })
     .then(handleResponse)
