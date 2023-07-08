@@ -9,7 +9,7 @@ const handleResponse = (response) => {
     }
     return response.json();
   }
-  
+
   
 export const registration = (email, password) => {
     return fetch(`${BASE_URL}/signup`, {
