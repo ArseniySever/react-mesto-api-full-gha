@@ -1,0 +1,21 @@
+.element__trash{
+    width: 18px;
+    height: 19px;
+    display: flex;
+    flex-direction: column;
+    max-width: 18px;
+    max-height: 19px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-image: url(../../../images/trashbin.svg);
+    cursor: pointer;
+    border: none;
+    z-index: 1;
+    background-color: transparent;
+    padding: 0;
+    outline-style: none;
+}
+.element__trash:hover{
+    opacity: 0.6;
+}

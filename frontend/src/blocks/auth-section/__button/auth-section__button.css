@@ -1,0 +1,10 @@
+.auth-section__button {
+    margin-top: 14rem;
+    height: 50px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    text-align: center;
+    font-weight: normal;
+    color: #000;
+}

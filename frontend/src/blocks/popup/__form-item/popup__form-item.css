@@ -1,0 +1,8 @@
+.popup__form-item{
+    max-width: 358px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.popup__form-item:first-child{
+    min-height: 60px;
+}

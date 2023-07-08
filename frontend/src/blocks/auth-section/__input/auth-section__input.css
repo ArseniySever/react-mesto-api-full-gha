@@ -1,0 +1,11 @@
+.auth-section__input {
+    padding: 0 0 13px 0;
+    margin-top: 2rem;
+    background-color: #000000;
+    color: #cccccc;
+    border: 0;
+    border-bottom: 1px solid #cccccc;
+    font-size: .9rem;
+    line-height: 1rem;
+    font-weight: 500;
+}

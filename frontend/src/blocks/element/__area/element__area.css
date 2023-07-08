@@ -1,0 +1,9 @@
+.element__area{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    grid-area: element__area;
+    margin-right: 20px;
+    justify-self: flex-end;
+    align-self: center;
+}

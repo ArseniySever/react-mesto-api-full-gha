@@ -1,0 +1,11 @@
+.auth-check {
+    width: 100%;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 60px 36px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

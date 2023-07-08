@@ -1,0 +1,17 @@
+.element__heart {
+    width: 22px;
+    height: 19px;
+    grid-area: element__heart;
+    justify-self: flex-end;
+    align-self: flex-end;
+    cursor: pointer;
+    border: none;
+    background-image: url(../../../images/Heart.svg);
+    background-color: transparent;
+    padding: 0;
+    outline-style: none;
+}
+.element__heart:hover {
+    opacity: 0.5;
+    transition: 300ms ease-in;
+}

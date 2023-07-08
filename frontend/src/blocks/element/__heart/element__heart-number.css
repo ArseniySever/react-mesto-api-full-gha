@@ -1,0 +1,15 @@
+.element__heart-number {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000;
+    max-height: 13px;
+    max-width: 10px;
+    justify-self: flex-start;
+    align-self: center;
+    margin: 0;
+    margin-top: 3px;
+
+  }

@@ -1,0 +1,10 @@
+.element__image {
+    object-fit: cover;
+    max-width: 282px;
+    max-height: 282px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    grid-area: element__image;
+    cursor: pointer;
+}

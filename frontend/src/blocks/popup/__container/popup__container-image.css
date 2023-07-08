@@ -1,0 +1,7 @@
+.popup__container-image{
+    max-width: fit-content;
+    max-height: 75vh;
+    background:  rgba(0, 0, 0, 0.15);
+    display: grid;
+    justify-content: center;
+}

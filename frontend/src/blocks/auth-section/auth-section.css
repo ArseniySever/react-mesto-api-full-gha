@@ -1,0 +1,17 @@
+.auth-section {
+    width: 27%;
+    margin-top: 3.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and  (max-width: 424px) {
+    .auth-section{
+        width: 80%;
+    
+    }
+    }

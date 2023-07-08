@@ -1,0 +1,17 @@
+.element__rectangle {
+    position: relative;
+    max-width: 282px;
+    min-width: 281px;
+    width: 100%;
+    min-height: 361px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-rows: 78% 22%;
+    grid-template-areas:
+        "element__image element__image"
+        "element__title element__area";
+    margin-bottom: 20px;
+    margin-right: 0;
+
+}

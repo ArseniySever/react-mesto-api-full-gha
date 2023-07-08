@@ -1,0 +1,26 @@
+.header {
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-areas: "logo menu";
+    justify-items: end;
+    align-items: center;
+    max-width: 68.75%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .header_wrappable {
+      grid-template-areas:
+        "menu menu"
+        "logo button";
+
+    }
+  }
+  @media (max-width: 768px) {
+    .header {
+        max-width: 100%;
+    }
+  }
+
