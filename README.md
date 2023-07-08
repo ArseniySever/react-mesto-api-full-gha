@@ -9,10 +9,12 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.110.242
+IP-адрес 84.201.131.90
 
-Frontend https://www.mestoapp.gq
+Frontend domainname.students.nomoredomains.icu
 
 
-Backend https://www.mestoapp.gq
+
+Backend domainname.students.nomoredomains.icu
+
 
