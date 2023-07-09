@@ -11,6 +11,7 @@ const {
 const { imgConst } = require('../utils/constants');
 
 router.get('/', getUsers);
+router.get('/me', resumeNowProfile);
 
 router.get('/:userId', celebrate({
   body: Joi.object().keys({
@@ -24,8 +25,6 @@ router.patch('/me', celebrate({
     about: Joi.string().min(2).max(30),
   }),
 }), resumeProfile);
-
-router.get('/me', resumeNowProfile);
 
 router.patch('/me/avatar', celebrate({
   body: Joi.object().keys({

@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
 const { User } = require('../models/user');
 const { ConflictError } = require('../error/ConflictError');
 const { ValidationError } = require('../error/ValidationError');
@@ -19,7 +20,7 @@ const getUsers = (req, res, next) => {
 };
 
 const getUserById = (req, res, next) => {
-  const id = req.user._id;
+  const id = req.params.userId;
 
   User.findById(id)
     .then((user) => {
@@ -53,6 +54,9 @@ const createUser = (req, res, next) => {
         about,
         avatar,
       })
+        .catch((err) => {
+          next(err);
+        })
         .then((user) => {
           res.status(201).send({
             name: user.name,
@@ -112,7 +116,7 @@ const resumeAvatar = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new NotFoundError('Incorrect data');
+        next(new NotFoundError('Incorrect data'));
       } else {
         next(err);
       }
@@ -134,7 +138,7 @@ const login = (req, res, next) => {
           res.send({
             token: jwt.sign(
               { _id: user._id },
-              'super-strong-secret',
+              NODE_ENV === 'production' ? JWT_SECRET : 'secret',
               { expiresIn: '7d' },
             ),
           });
@@ -143,13 +147,7 @@ const login = (req, res, next) => {
           next(err);
         });
     })
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        throw new UnauthorizedError('UNAUTHORIZED');
-      } else {
-        next(new UnauthorizedError('Server Error'));
-      }
-    });
+    .catch(next);
 };
 
 const resumeNowProfile = (req, res, next) => {
@@ -169,7 +167,7 @@ const resumeNowProfile = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        throw new ValidationError('Invalid id');
+        next(new ValidationError('Invalid id'));
       } else {
         next(err);
       }
