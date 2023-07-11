@@ -37,6 +37,8 @@ function App() {
 
 
   React.useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
       Auth
         .getContent()
         .then((res) => {
@@ -47,6 +49,7 @@ function App() {
           }
         })
         .catch(console.error);
+      }
   }, [navigate]);
 
 
@@ -139,6 +142,7 @@ function App() {
   }
   const handleLogout = () => {
     setAuthToken(null);
+    localStorage.removeItem("jwt");
     setLoggedIn(false);
     return <Navigate to="/signin" replace />;
   };
@@ -146,6 +150,7 @@ function App() {
     Auth.authorization(email, password)
       .then(data => {
         if (data) {
+          localStorage.setItem('jwt', data);
           setEmail(email);
           navigate('/', {replace: true});
         }

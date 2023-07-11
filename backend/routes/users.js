@@ -11,7 +11,12 @@ const {
 const { imgConst } = require('../utils/constants');
 
 router.get('/', getUsers);
-router.get('/me', resumeNowProfile);
+
+router.patch('/me/avatar', celebrate({
+  body: Joi.object().keys({
+    avatar: Joi.string().pattern(imgConst),
+  }),
+}), resumeAvatar);
 
 router.get('/:userId', celebrate({
   body: Joi.object().keys({
@@ -26,10 +31,6 @@ router.patch('/me', celebrate({
   }),
 }), resumeProfile);
 
-router.patch('/me/avatar', celebrate({
-  body: Joi.object().keys({
-    avatar: Joi.string().pattern(imgConst),
-  }),
-}), resumeAvatar);
+router.get('/me', resumeNowProfile);
 
 module.exports = router;

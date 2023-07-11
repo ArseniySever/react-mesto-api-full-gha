@@ -43,6 +43,9 @@ const deleteCardsById = (req, res, next) => {
         .catch((err) => {
           next(err);
         });
+    })
+    .catch((err) => {
+      next(err);
     });
 };
 
@@ -57,15 +60,10 @@ const likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Card not found');
       }
-      res.send({ data: card })
-
-        .catch((err) => {
-          if (err.name === 'CastError' || err.name === 'ValidationError') {
-            next(new ValidationError('Invalid id'));
-            return;
-          }
-          next(err);
-        });
+      res.send({ data: card });
+    })
+    .catch((err) => {
+      next(err);
     });
 };
 
@@ -83,10 +81,6 @@ const dislikeCard = (req, res, next) => {
       res.send({ data: card });
     })
     .catch((err) => {
-      if (err.name === 'CastError' || err.name === 'ValidationError') {
-        next(new ValidationError('Invalid id'));
-        return;
-      }
       next(err);
     });
 };

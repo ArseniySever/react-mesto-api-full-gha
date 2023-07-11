@@ -54,9 +54,6 @@ const createUser = (req, res, next) => {
         about,
         avatar,
       })
-        .catch((err) => {
-          next(err);
-        })
         .then((user) => {
           res.status(201).send({
             name: user.name,
@@ -74,6 +71,9 @@ const createUser = (req, res, next) => {
             next(new ConflictError('Пользователь с таким email уже существует'));
             return;
           }
+          next(err);
+        })
+        .catch((err) => {
           next(err);
         });
     });
@@ -138,7 +138,7 @@ const login = (req, res, next) => {
           res.send({
             token: jwt.sign(
               { _id: user._id },
-              NODE_ENV === 'production' ? JWT_SECRET : 'secret',
+              NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
               { expiresIn: '7d' },
             ),
           });
