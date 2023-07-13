@@ -76,7 +76,6 @@ class Api {
 const apiSettings = {
   baseUrl: 'http://localhost:4000',
   headers: {
-    authorization: "b1be6ff6-5ee2-4424-9627-8adc5e79825a",
     "Content-Type": "application/json",
   },
 };

@@ -135,13 +135,13 @@ const login = (req, res, next) => {
           if (!matched) {
             throw new UnauthorizedError('Неправильная почта или пароль');
           }
-          res.send({
-            token: jwt.sign(
-              { _id: user._id },
-              NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
-              { expiresIn: '7d' },
-            ),
+          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+          res.cookie('jwt', token, {
+            maxAge: 604800000,
+            httpOnly: true,
+            sameSite: true,
           });
+          return res.status(200).send({ user });
         })
         .catch((err) => {
           next(err);
@@ -151,7 +151,7 @@ const login = (req, res, next) => {
 };
 
 const resumeNowProfile = (req, res, next) => {
-  const { userId } = req.user._id;
+  const userId = req.user._id;
   User.findById(userId)
     .then((user) => {
       if (!user) {

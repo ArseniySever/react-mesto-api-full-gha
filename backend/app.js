@@ -1,5 +1,6 @@
 const express = require('express');
 
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
@@ -26,6 +27,7 @@ mongoose
 
 const app = express();
 
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(helmet());

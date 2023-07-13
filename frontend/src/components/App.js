@@ -37,19 +37,16 @@ function App() {
 
 
   React.useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
       Auth
         .getContent()
-        .then((res) => {
-          if (res){
+        .then((data) => {
+          if (data){
+          setEmail(data.data.email);
           setLoggedIn(true);
-          setEmail(res.data.email);
-          navigate("/", {replace: true})
+          navigate('/',  {replace: true});
           }
         })
         .catch(console.error);
-      }
   }, [navigate]);
 
 
@@ -62,7 +59,7 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       });
-  }, []);
+  }, [loggedIn]);
 
   function handleCardClick(card) {
     setSelectedCard({
@@ -142,7 +139,6 @@ function App() {
   }
   const handleLogout = () => {
     setAuthToken(null);
-    localStorage.removeItem("jwt");
     setLoggedIn(false);
     return <Navigate to="/signin" replace />;
   };
@@ -150,9 +146,10 @@ function App() {
     Auth.authorization(email, password)
       .then(data => {
         if (data) {
-          localStorage.setItem('jwt', data);
+          setLoggedIn(true);
           setEmail(email);
           navigate('/', {replace: true});
+
         }
       })
       .catch((err) => {

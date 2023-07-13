@@ -35,9 +35,7 @@ export const authorization = (email, password) => {
         body: JSON.stringify({email, password })
     })
     .then(handleResponse)
-    .then((data) => {
-      return data.token;
-    });
+
 };
 
 
@@ -45,10 +43,12 @@ export const getContent = () => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
+            'Accept': "application/json",
             'Content-type': 'application/json',
         },
         credentials: "include",
     })
     .then(res => res.json())
     .then(data => data)
+
 } 
