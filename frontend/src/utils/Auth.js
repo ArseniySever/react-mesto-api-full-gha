@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://158.160.38.64:4000';
+export const BASE_URL = 'http://domainname.students.nomoredomains.work';
 const handleResponse = (response) => {
     if (!response.ok) {
       return response.json().then((err) => {
