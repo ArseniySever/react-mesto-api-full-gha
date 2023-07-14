@@ -131,7 +131,6 @@ function App() {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
-
       .catch((err) => console.log(`Error ${err} in addCard`));
   }
   function handleLogin() {
@@ -188,18 +187,18 @@ function App() {
             <Route path="/sign-in" element={<Login  onSignin={handleSignin}/>} />
             <Route path="/sign-up" element={<Register  onRegist={handleRegister} />} /> 
             <Route path="/" element={ <ProtectedRoute
-                    component={Main}
-                          onEditAvatar={onEditAvatar}
-                          onEditProfile={onEditProfile}
-                          onAddPlace={onAddPlace}
-                          onCardClick={handleCardClick}
-                          cards={cards}
-                          onCardLike={handleCardLike}
-                          onCardDelete={handleCardDelete}
-                          email={email}
-                          loggedIn={loggedIn}
-                          onLogout={handleLogout}
-                  />
+                       component={Main} 
+                       onEditAvatar={onEditAvatar} 
+                       onEditProfile={onEditProfile} 
+                       onAddPlace={onAddPlace} 
+                       onCardClick={handleCardClick} 
+                       cards={cards} 
+                       onCardLike={handleCardLike} 
+                       onCardDelete={handleCardDelete} 
+                       email={email} 
+                       loggedIn={loggedIn} 
+                       onLogout={handleLogout} 
+               /> 
               }
             />
             <Route path="*" element={loggedIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />} />

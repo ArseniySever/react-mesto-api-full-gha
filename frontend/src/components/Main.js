@@ -3,11 +3,12 @@ import Card from "./Card";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import Header from "./Header";
 
-function Main(
+function Main( 
   props
-) {
-  const currentContext = React.useContext(CurrentUserContext);
+) { 
+  const currentContext = React.useContext(CurrentUserContext); 
 
+ 
   return (
     <>
     <Header isWrappable={true}>
@@ -47,14 +48,14 @@ function Main(
               ></button>
             </section>
             <section className="elements">
-              {props.cards.map(({ _id, ...cards }) => (
-                <Card
-                  key={_id}
-                  _id={_id}
-                  {...cards}
-                  onCardClick={props.onCardClick}
-                  onCardLike={props.onCardLike}
-                  onCardDelete={props.onCardDelete}
+               {
+               props.cards.cards.map(( card ) => ( 
+                <Card 
+                  key={card._id} 
+                  card={card} 
+                  onCardClick={props.onCardClick} 
+                  onCardLike={props.onCardLike} 
+                  onCardDelete={props.onCardDelete} 
                 />
               ))}
             </section>

@@ -36,7 +36,7 @@ class Api {
     }).then((res) => this._parseResponse(res));
   }
   setLike(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/cards/likes/${cardId}`, {
       method: isLiked ? "PUT" : "DELETE",
       credentials: "include",
       headers: this._headers,
