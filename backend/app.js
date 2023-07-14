@@ -20,7 +20,6 @@ const { login, createUser } = require('./controllers/users');
 
 const { PORT = 4000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
-
 mongoose
   .connect(DB_URL, {
     useNewUrlParser: true,
@@ -30,7 +29,7 @@ const app = express();
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://158.160.38.64:3000', credentials: true }));
 app.use(helmet());
 app.use(requestLogger);
 app.get('/crash-test', () => {
@@ -45,14 +44,14 @@ app.post('/signup', celebrate({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
     avatar: Joi.string().pattern(imgConst),
-  }).unknown(true),
+  }),
 }), createUser);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().required(),
-  }).unknown(true),
+  }),
 }), login);
 app.use(auth);
 app.use('/users', userRoutes);

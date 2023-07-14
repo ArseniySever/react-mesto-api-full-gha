@@ -1,4 +1,4 @@
-const { Card } = require('../models/card');
+const Card = require('../models/card');
 
 const { ValidationError } = require('../error/ValidationError');
 const { ForbiddenError } = require('../error/ForbiddenError');
@@ -50,7 +50,7 @@ const deleteCardsById = (req, res, next) => {
 };
 
 const likeCard = (req, res, next) => {
-  const { userId } = req.user_id;
+  const userId = req.user._id;
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $addToSet: { likes: userId } },
@@ -68,7 +68,7 @@ const likeCard = (req, res, next) => {
 };
 
 const dislikeCard = (req, res, next) => {
-  const userId = req.user_id;
+  const userId = req.user._id;
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $pull: { likes: userId } },

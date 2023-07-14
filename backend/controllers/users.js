@@ -72,10 +72,10 @@ const createUser = (req, res, next) => {
             return;
           }
           next(err);
-        })
-        .catch((err) => {
-          next(err);
         });
+    })
+    .catch((err) => {
+      next(err);
     });
 };
 
@@ -141,7 +141,7 @@ const login = (req, res, next) => {
             httpOnly: true,
             sameSite: true,
           });
-          return res.status(200).send({ user });
+          return res.status(200);
         })
         .catch((err) => {
           next(err);

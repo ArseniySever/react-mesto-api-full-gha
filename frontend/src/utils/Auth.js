@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:4000';
+export const BASE_URL = 'http://158.160.38.64:4000';
 const handleResponse = (response) => {
     if (!response.ok) {
       return response.json().then((err) => {
@@ -31,7 +31,6 @@ export const authorization = (email, password) => {
         headers: {
             'Content-type': 'application/json'
         },
-        credentials: "include",
         body: JSON.stringify({email, password })
     })
     .then(handleResponse)

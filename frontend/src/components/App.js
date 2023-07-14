@@ -39,10 +39,10 @@ function App() {
   React.useEffect(() => {
       Auth
         .getContent()
-        .then((data) => {
-          if (data){
-          setEmail(data.data.email);
+        .then((res) => {
+          if (res){
           setLoggedIn(true);
+          setEmail(res.data.email); 
           navigate('/',  {replace: true});
           }
         })
@@ -142,14 +142,12 @@ function App() {
     return <Navigate to="/signin" replace />;
   };
   function handleSignin (email, password) {
-    Auth.authorization(email, password)
-      .then(data => {
-        if (data) {
-          setLoggedIn(true);
-          setEmail(email);
-          navigate('/', {replace: true});
-
-        }
+    Auth.authorization(email, password) 
+    .then(data => { 
+      if (data) { 
+        setEmail(email); 
+        navigate('/', {replace: true}); 
+      } 
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
