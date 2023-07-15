@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
-
 const validator = require('validator');
 
-const cardSchema = new Schema({
+const cardSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -35,4 +32,6 @@ const cardSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('card', cardSchema);
+const Card = mongoose.model('card', cardSchema);
+
+module.exports = Card;

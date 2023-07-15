@@ -36,7 +36,7 @@ class Api {
     }).then((res) => this._parseResponse(res));
   }
   setLike(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: isLiked ? "PUT" : "DELETE",
       credentials: "include",
       headers: this._headers,
@@ -74,7 +74,7 @@ class Api {
   }
 }
 const apiSettings = {
-  baseUrl: 'http://domainname.students.nomoredomains.work',
+  baseUrl: 'http://localhost:4000',
   headers: {
     "Content-Type": "application/json",
   },

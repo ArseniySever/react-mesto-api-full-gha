@@ -39,10 +39,10 @@ function App() {
   React.useEffect(() => {
       Auth
         .getContent()
-        .then((res) => {
-          if (res){
+        .then((data) => {
+          if (data){
+          setEmail(data.data.email);
           setLoggedIn(true);
-          setEmail(res.data.email); 
           navigate('/',  {replace: true});
           }
         })
@@ -131,6 +131,7 @@ function App() {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
+
       .catch((err) => console.log(`Error ${err} in addCard`));
   }
   function handleLogin() {
@@ -142,12 +143,14 @@ function App() {
     return <Navigate to="/signin" replace />;
   };
   function handleSignin (email, password) {
-    Auth.authorization(email, password) 
-    .then(data => { 
-      if (data) { 
-        setEmail(email); 
-        navigate('/', {replace: true}); 
-      } 
+    Auth.authorization(email, password)
+      .then(data => {
+        if (data) {
+          setLoggedIn(true);
+          setEmail(email);
+          navigate('/', {replace: true});
+
+        }
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
@@ -185,18 +188,18 @@ function App() {
             <Route path="/sign-in" element={<Login  onSignin={handleSignin}/>} />
             <Route path="/sign-up" element={<Register  onRegist={handleRegister} />} /> 
             <Route path="/" element={ <ProtectedRoute
-                       component={Main} 
-                       onEditAvatar={onEditAvatar} 
-                       onEditProfile={onEditProfile} 
-                       onAddPlace={onAddPlace} 
-                       onCardClick={handleCardClick} 
-                       cards={cards} 
-                       onCardLike={handleCardLike} 
-                       onCardDelete={handleCardDelete} 
-                       email={email} 
-                       loggedIn={loggedIn} 
-                       onLogout={handleLogout} 
-               /> 
+                    component={Main}
+                          onEditAvatar={onEditAvatar}
+                          onEditProfile={onEditProfile}
+                          onAddPlace={onAddPlace}
+                          onCardClick={handleCardClick}
+                          cards={cards}
+                          onCardLike={handleCardLike}
+                          onCardDelete={handleCardDelete}
+                          email={email}
+                          loggedIn={loggedIn}
+                          onLogout={handleLogout}
+                  />
               }
             />
             <Route path="*" element={loggedIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />} />

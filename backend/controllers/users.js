@@ -141,7 +141,7 @@ const login = (req, res, next) => {
             httpOnly: true,
             sameSite: true,
           });
-          return res.status(200);
+          return res.send({ token });
         })
         .catch((err) => {
           next(err);

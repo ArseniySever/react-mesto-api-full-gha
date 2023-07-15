@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://domainname.students.nomoredomains.work';
+export const BASE_URL = 'http://localhost:4000';
 const handleResponse = (response) => {
     if (!response.ok) {
       return response.json().then((err) => {
@@ -31,6 +31,7 @@ export const authorization = (email, password) => {
         headers: {
             'Content-type': 'application/json'
         },
+        credentials: "include",
         body: JSON.stringify({email, password })
     })
     .then(handleResponse)

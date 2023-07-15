@@ -6,7 +6,7 @@ const { NotFoundError } = require('../error/NotFoundError');
 
 const getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ cards }))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 
@@ -15,7 +15,7 @@ const createCards = (req, res, next) => {
   const { _id } = req.user;
   Card.create({ name, link, owner: _id })
     .then((card) => res
-      .send({ data: card }))
+      .send(card))
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         next(new ValidationError('Server Error'));
@@ -60,7 +60,7 @@ const likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Card not found');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       next(err);
@@ -78,7 +78,7 @@ const dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Card not found');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       next(err);

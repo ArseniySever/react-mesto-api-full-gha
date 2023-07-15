@@ -29,7 +29,7 @@ const app = express();
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://api.domainname.students.n.nomoredomains.work', credentials: true }));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(helmet());
 app.use(requestLogger);
 app.get('/crash-test', () => {
