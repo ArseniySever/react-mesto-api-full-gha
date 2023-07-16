@@ -74,7 +74,7 @@ class Api {
   }
 }
 const apiSettings = {
-  baseUrl: 'http://localhost:4000',
+  baseUrl: 'http://158.160.52.143:4000',
   headers: {
     "Content-Type": "application/json",
   },
