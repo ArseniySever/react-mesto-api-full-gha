@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://158.160.52.143:4000';
+export const BASE_URL = 'http://localhost:4000';
 const handleResponse = (response) => {
     if (!response.ok) {
       return response.json().then((err) => {
