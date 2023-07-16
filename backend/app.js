@@ -3,6 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const path = require('path');
 const mongoose = require('mongoose');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
@@ -27,9 +28,10 @@ mongoose
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://domainname.students.nomoredomains.work:3000', credentials: true }));
+app.use(cors({ origin: 'http://158.160.36.229:3000', credentials: true }));
 app.use(helmet());
 app.use(requestLogger);
 app.get('/crash-test', () => {
