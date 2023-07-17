@@ -1,4 +1,5 @@
 export const BASE_URL = 'http://localhost:4000';
+
 const handleResponse = (response) => {
     if (!response.ok) {
       return response.json().then((err) => {
