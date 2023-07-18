@@ -74,7 +74,7 @@ class Api {
   }
 }
 const apiSettings = {
-  baseUrl: 'https://api.domainname.students.n.nomoredomains.work',
+  baseUrl: 'https://localhost:4000',
 
   headers: {
     "Content-Type": "application/json",

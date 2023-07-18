@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.domainname.students.n.nomoredomains.work';
+export const BASE_URL = 'https://localhost:4000';
 
 const handleResponse = (response) => {
     if (!response.ok) {
