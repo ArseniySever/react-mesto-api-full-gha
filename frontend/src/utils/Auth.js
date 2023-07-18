@@ -44,7 +44,6 @@ export const getContent = () => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
-            'Accept': "application/json",
             'Content-type': 'application/json',
         },
         credentials: "include",
