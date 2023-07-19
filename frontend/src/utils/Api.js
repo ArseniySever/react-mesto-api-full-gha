@@ -10,7 +10,7 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
@@ -75,7 +75,7 @@ class Api {
   }
 }
 const apiSettings = {
-  baseUrl: 'http://api.domainname.students.n.nomoredomains.work',
+  baseUrl: 'https://api.domainname.students.n.nomoredomains.work',
 
   headers: {
     'Accept': "application/json", 
