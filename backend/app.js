@@ -39,7 +39,7 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-app.post('/signup', cors(), celebrate({
+app.post('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().required(),
@@ -49,15 +49,15 @@ app.post('/signup', cors(), celebrate({
   }),
 }), createUser);
 
-app.post('/signin', cors(), celebrate({
+app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().required(),
   }),
 }), login);
-app.use(auth);
-app.use('/users', cors(),  userRoutes);
-app.use('/cards', cors(), cardsRoutes);
+app.use(auth, cors());
+app.use('/users', userRoutes);
+app.use('/cards', cardsRoutes);
 
 app.use('/*', () => {
   throw new NotFoundError('Inncorect link');
