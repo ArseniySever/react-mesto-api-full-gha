@@ -10,6 +10,7 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
+  
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
