@@ -19,7 +19,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { login, createUser } = require('./controllers/users');
 
-const { PORT = 4000, DB_URL = 'mongodb://130.193.50.106:27017/mestodb' } = process.env;
+const { PORT = 4000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 mongoose
   .connect(DB_URL, {
@@ -31,7 +31,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ origin: 'https://api.domainname.students.n.nomoredomains.work/users/me', credentials: true }));
 app.use(helmet());
 app.use(requestLogger);
 app.get('/crash-test', () => {
