@@ -41,7 +41,7 @@ function App() {
         .getContent()
         .then((data) => {
           if (data){
-          setEmail(data.data.email);
+          setEmail(data.email);
           setLoggedIn(true);
           navigate('/',  {replace: true});
           }
