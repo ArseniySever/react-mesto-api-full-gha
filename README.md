@@ -9,11 +9,10 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.39.242
+IP-адрес 130.193.50.106
 
 Frontend domainname.students.nomoredomains.work
 
 
 
 Backend api.domainname.students.n.nomoredomains.work
-
