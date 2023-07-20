@@ -21,14 +21,6 @@ const { login, createUser } = require('./controllers/users');
 
 const { PORT = 4000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
-const allowedCors = [
-  'https://api.domainname.students.n.nomoredomains.work/cards',
-  'https://api.domainname.students.n.nomoredomains.work/users',
-  'https://api.domainname.students.n.nomoredomains.work/users/me',
-  'https://api.domainname.students.n.nomoredomains.work/signup',
-  'https://api.domainname.students.n.nomoredomains.work/signin',
-];
-
 mongoose
   .connect(DB_URL, {
     useNewUrlParser: true,
@@ -39,7 +31,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors({ origin: allowedCors, credentials: true }));
+app.use(cors());
 app.use(helmet());
 app.use(requestLogger);
 app.get('/crash-test', () => {
