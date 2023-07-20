@@ -31,7 +31,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors({ origin: 'api.domainname.students.n.nomoredomains.work' }));
+app.use(cors({ origin: 'https://api.domainname.students.n.nomoredomains.work/' }));
 app.use(helmet());
 app.use(requestLogger);
 app.get('/crash-test', () => {
