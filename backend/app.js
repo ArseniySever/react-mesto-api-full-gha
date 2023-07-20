@@ -22,11 +22,11 @@ const { login, createUser } = require('./controllers/users');
 const { PORT = 4000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const allowedCors = [
-  'https://api.domainname.students.n.nomoredomains.work/cards',
-  'https://api.domainname.students.n.nomoredomains.work/users',
-  'https://api.domainname.students.n.nomoredomains.work/users/me',
-  'https://api.domainname.students.n.nomoredomains.work/signup',
-  'https://api.domainname.students.n.nomoredomains.work/signin',
+  'http://api.domainname.students.n.nomoredomains.work/cards',
+  'http://api.domainname.students.n.nomoredomains.work/users',
+  'http://api.domainname.students.n.nomoredomains.work/users/me',
+  'http://api.domainname.students.n.nomoredomains.work/signup',
+  'http://api.domainname.students.n.nomoredomains.work/signin',
 ];
 
 mongoose
