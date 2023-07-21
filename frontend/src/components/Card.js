@@ -13,11 +13,10 @@ function Card({
 }) {
   const card = { _id: _id, link: link, name: name, owner: owner, likes: likes };
   const currentContext = React.useContext(CurrentUserContext);
-  const isOwn = owner._id === currentContext._id;
-  const isLiked = likes.some((i) => i._id === currentContext._id);
-
-  const cardLikeButtonClassName = `element__heart ${
-    isLiked ? "element__heart_active" : ""
+  const isOwn = owner === currentContext._id;
+  const isLiked = likes.some((i) => i === currentContext._id);
+  const cardLikeButtonClassName = `element__heart ${ 
+    isLiked ? "element__heart_active" : "" 
   }`;
   function handleClick() {
     onCardClick(card);

@@ -101,18 +101,18 @@ const resumeProfile = (req, res, next) => {
 };
 
 const resumeAvatar = (req, res, next) => {
-  const { avatar } = req.body;
+  const avatar = req.body;
   const { _id } = req.user;
 
   User.findByIdAndUpdate(
     _id,
-    { avatar },
+    avatar,
     { new: true, runValidators: true },
   )
     .then((user) => {
       if (!user) {
         next(new NotFoundError('User not found'));
-      } res.send({ avatar: user.avatar });
+      } res.send({ user });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

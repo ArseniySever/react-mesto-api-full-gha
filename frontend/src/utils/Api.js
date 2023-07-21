@@ -36,14 +36,14 @@ class Api {
       headers: this._headers,
     }).then((res) => this._parseResponse(res));
   }
-  setLike(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: isLiked ? "PUT" : "DELETE",
-      credentials: "include",
-      headers: this._headers,
-    }).then((res) => this._parseResponse(res));
-  }
-
+  setLike(cardId, isLiked) { 
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, { 
+      method: isLiked ? "PUT" : "DELETE", 
+      credentials: "include", 
+      headers: this._headers, 
+    }).then((res) => this._parseResponse(res)); 
+  } 
+ 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
@@ -51,29 +51,30 @@ class Api {
       headers: this._headers,
     }).then((res) => this._parseResponse(res));
   }
-  editUserInfo(name, desc) {
+  editUserInfo(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       credentials: "include",
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        about: desc,
+        name,
+        about,
       }),
     }).then((res) => this._parseResponse(res));
   }
 
-  editAvatar({ url }) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
-      credentials: "include",
-      headers: this._headers,
-      body: JSON.stringify({
-        avatar: url,
-      }),
-    }).then((res) => this._parseResponse(res));
-  }
-}
+  editAvatar(url) { 
+    return fetch(`${this._baseUrl}/users/me/avatar`, { 
+      method: "PATCH", 
+      credentials: "include", 
+      headers: this._headers, 
+      body: JSON.stringify({ 
+        avatar: url, 
+      }), 
+    }).then((res) => this._parseResponse(res)); 
+  } 
+} 
+
 const apiSettings = {
   baseUrl: 'https://api.domainname.students.n.nomoredomains.work',
 
